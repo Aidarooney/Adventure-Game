@@ -15,8 +15,22 @@ if answer.lower().strip() == "yes":
             print("Good choice you made it away safely")
 
     elif answer == "right":
-        answer = input("You find a building, would you like to go inside? (yes/no)")
+        answer = input("You find a building, would you like to go inside? (yes/no)\n")
 
+        if answer == "yes":
+            answer = input("You enter a room with a tool chest and 2 doors, one leads to the kitchen and the other leads to the garage (chest/kitchen/garage)\n")
+        
+        else:
+            print("You keep walking through the forest")
+            answer = input("You are starving and come across some berries, they look edible (eat/leave)\n")
+
+            if answer == "eat":
+                print("You die of poisoning from the Honeysuckle berries")
+                input(enter)
+
+            else:
+                print("You walk away from the bush hoping for a more reliable food source")
+                
 
     else:
         print("You Lost")
