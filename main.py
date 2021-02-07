@@ -1,3 +1,4 @@
+from time import *
 answer = input("Would you like to play? (yes/no)\n")
 enter = "Press Enter to continue..."
 
@@ -12,7 +13,13 @@ if answer.lower().strip() == "yes":
             input(enter)
 
         else:
-            print("Good choice you made it away safely")
+            print("Good choice you made it away safely\n")
+            time.sleep(3)
+            print("You come accross a tree with what appears to be a building on top of it and a keypad on a knot, there appears to be a note above it\n")
+            answer = input("Do you read the note or keep moving? (read/move)\n")
+
+            if answer == "read":
+                print("The note reads, 'The owner of this base is a man for CTF, open the door and seek Consolation HEX: 6f 70 65 6e'")
 
     elif answer == "right":
         answer = input("You find a building, would you like to go inside? (yes/no)\n")
