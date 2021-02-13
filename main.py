@@ -1,10 +1,15 @@
 from functions import walking
+from functions import terminal
 import time
 answer = input("Would you like to play? (yes/no)\n")
 enter = "Press Enter to continue..."
 HEXcode = "open"
 HEXinput = ""
-DoorOpen = False 
+DoorOpen = False
+riddle = "map" 
+Break = False
+
+
 
 if answer.lower().strip() == "yes":
     answer = input("You reach a cross roads, would you like to go left or right?\n").lower().strip()
@@ -32,7 +37,7 @@ if answer.lower().strip() == "yes":
                         DoorOpen = True
                 print("The door slides open revealling a ladder that you start to climb\n")
                 time.sleep(3)
-                
+                terminal("Welcome to Farmers terminal (not associated with Farmer)")
 
 
     elif answer == "right":
@@ -40,6 +45,31 @@ if answer.lower().strip() == "yes":
 
         if answer == "yes":
             answer = input("You enter a room with a tool chest and 2 doors, one leads to the kitchen and the other leads to the garage (chest/kitchen/garage)\n")
+            time.sleep(1)
+            if answer ==  "chest":
+                print("You walk over towards the chest and open it, there is a crowbar inside (This can be used to access rooms that are locked)")
+
+            elif answer == "garage":
+                print("You walk ovr to a door on the other side of the building that appears to lead to some sort of garage.\n")
+                print("The door appears to be locked by some sort of keypad")
+
+            else:
+                print("You walk over to a door witha sign above it reading, 'In this kitchen we dance' You make the educated guess that it leads to the kitchen\n")
+                time.sleep(1)
+                print("You push open the door revealing another room, but not a kitchen, this room has a soletary computer in it\n")
+                time.sleep(1)
+                print("You notice that there is a terminal open on it, you move to get a closer look")
+                terminal("Welcome to Farmers terminal (Not associated in any way with Farmers) ©I dont have the capacity to make a name for the company\n")
+                terminal("This terminal comes equiped with one program and it is a riddle, this riddle is the code to unlock the garage door\n")     
+                while Break == False:
+                    terminal("I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?\n")
+                    answer = input("")
+                    if answer == (riddle):
+                        Break = True
+                        terminal("Congratulations you solved the riddle, the code for the door is '1238'\n")
+                    else:
+                        terminal("Please Try again that was not the answer, you mustn't be Jack\n")
+                    
         
         else:
             print("You keep walking through the forest\n")
