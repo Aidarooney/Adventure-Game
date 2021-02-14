@@ -1,5 +1,6 @@
 from functions import walking
 from functions import terminal
+from functions import time_convert
 import time
 answer = input("Would you like to play? (yes/no)\n")
 enter = "Press Enter to continue..."
@@ -8,11 +9,25 @@ HEXinput = ""
 DoorOpen = False
 riddle = "map" 
 Break = False
+fire_answers = "fuel, oxygen, heat"
+fire_input = ""
+
+
+
+'''
+Add these in after bulk of code is completed
+time_lapsed = end_time - start_time
+end_time = time.time()
+start_time = time.time()
+time_convert(time_lapsed)
+'''
+
 
 
 
 if answer.lower().strip() == "yes":
     answer = input("You reach a cross roads, would you like to go left or right?\n").lower().strip()
+    start_time = time.time()
 
     if answer == "left":
         answer = input("You encounter a cow, would you like to run or attack\n")
@@ -37,7 +52,7 @@ if answer.lower().strip() == "yes":
                         DoorOpen = True
                 print("The door slides open revealling a ladder that you start to climb\n")
                 time.sleep(3)
-                terminal("Welcome to Farmers terminal (not associated with Farmer)")
+
 
 
     elif answer == "right":
@@ -59,7 +74,7 @@ if answer.lower().strip() == "yes":
                 print("You push open the door revealing another room, but not a kitchen, this room has a soletary computer in it\n")
                 time.sleep(1)
                 print("You notice that there is a terminal open on it, you move to get a closer look")
-                terminal("Welcome to Farmers terminal (Not associated in any way with Farmers) ©I dont have the capacity to make a name for the company\n")
+                terminal("Welcome to El Gatos terminal (Not associated in any way with a cat) ©I dont have the capacity to make a name for the company\n")
                 terminal("This terminal comes equiped with one program and it is a riddle, this riddle is the code to unlock the garage door\n")     
                 while Break == False:
                     terminal("I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?\n")
@@ -68,7 +83,7 @@ if answer.lower().strip() == "yes":
                         Break = True
                         terminal("Congratulations you solved the riddle, the code for the door is '1238'\n")
                     else:
-                        terminal("Please Try again that was not the answer, you mustn't be Jack\n")
+                        terminal("Please Try again that was not the answer\n")
                     
         
         else:
@@ -82,7 +97,33 @@ if answer.lower().strip() == "yes":
 
             else:
                 print("You walk away from the bush hoping for a more reliable food source\n")
-                
+                walking()
+                print("You arrive at what appears to be a farm with a small farm house at the top of the hill")
+                time.sleep(1)
+                print("You start walking towards it with the hope of food and warmth for the night")
+                walking()
+                answer = input("You knock on the door and it slides open revealing a warm deserted house with a stocked fridge, do you stay the night (yes/no)\n")
+                if answer == "yes":
+                    print("You lean into the fireplace to start a roaring fire to cook some delicious beans on\n")
+                    time.sleep(1)
+                    print("You think back to your training as a scout and desperatly try and remember how to light a proper fire\n")
+                    fire_input = input("What are the 3 elements required for a good fire?\n")
+                    if fire_input == fire_answers:
+                        print("You start a roaring fire")
+                        time.sleep(1)
+                        print("You cook up some steak that you find in the fridge, medium rare\n")
+                        time.sleep(3)
+                        print("You fall asleep next to the heat of your roaring fire")
+                        time.sleep(5)
+                        print("The fire got out of control and burned the house down with you in it")
+                        input(enter)
+                        #Need to add more story here instead of ending it
+
+                else:
+                    print("You continue on your way as night closes in and by 3am you still havent found food or shelter, you lean against a tree and slip into a deep sleep")
+                    time.sleep(3)
+                    print("You die from starvation")
+                    input(enter)
 
     else:
         print("You Lost")

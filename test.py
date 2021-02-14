@@ -1,12 +1,9 @@
-from functions import terminal
-import time
-class bcolors:
-    green= '\033[92m'
-    ENDC = '\033[0m'
+fire_answers = "fuel, oxygen, heat"
+fire_input = ""
 
-bcolors.green
-terminal("Welcome to Farmers term")
-bcolors.ENDC
 
-print("Hello World")
-time.sleep(5)
+
+print("You think back to your training as a scout and desperatly try and remember how to light a proper fire\n")
+fire_input = input("What are the 3 elements required for a good fire?\n")
+if fire_input == fire_answers:
+    print("You start a roaring fire")
