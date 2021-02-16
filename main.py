@@ -74,6 +74,15 @@ if answer.lower().strip() == "yes":
                 print("You push open the door revealing another room, but not a kitchen, this room has a soletary computer in it\n")
                 time.sleep(1)
                 print("You notice that there is a terminal open on it, you move to get a closer look")
+                print(r"""\
+      /\_/\
+ /\  / o o \
+//\\ \~(*)~/
+`  \/   ^ /
+   | \|| ||
+   \ '|| ||
+    \)()-())
+                """)
                 terminal("Welcome to El Gatos terminal (Not associated in any way with a cat) ©I dont have the capacity to make a name for the company\n")
                 terminal("This terminal comes equiped with one program and it is a riddle, this riddle is the code to unlock the garage door\n")     
                 while Break == False:
