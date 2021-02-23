@@ -74,7 +74,7 @@ if answer.lower().strip() == "yes":
                 print("You push open the door revealing another room, but not a kitchen, this room has a soletary computer in it\n")
                 time.sleep(1)
                 print("You notice that there is a terminal open on it, you move to get a closer look")
-                print(r"""\
+                print(r"""
       /\_/\
  /\  / o o \
 //\\ \~(*)~/
