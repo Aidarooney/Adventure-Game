@@ -15,16 +15,6 @@ fire_input = ""
 
 
 
-'''
-Add these in after bulk of code is completed
-time_lapsed = end_time - start_time
-end_time = time.time()
-start_time = time.time()
-time_convert(time_lapsed)
-'''
-
-
-
 
 if answer.lower().strip() == "yes":
     answer = input("You reach a cross roads, would you like to go left or right?\n").lower().strip()
