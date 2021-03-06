@@ -1,3 +1,9 @@
-from functions import loading
-
-loading()
+print(r"""\
+      /\_/\
+ /\  / o o \
+//\\ \~(*)~/
+`  \/   ^ /
+   | \|| ||
+   \ '|| ||
+    \)()-())
+                """)

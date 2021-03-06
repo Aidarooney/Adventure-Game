@@ -1,7 +1,6 @@
 from functions import walking
 from functions import terminal
 from functions import time_convert
-from functions import loading
 import time
 answer = input("Would you like to play? (yes/no)\n")
 enter = "Press Enter to continue..."
@@ -12,6 +11,16 @@ riddle = "map"
 Break = False
 fire_answers = "fuel, oxygen, heat"
 fire_input = ""
+
+
+
+'''
+Add these in after bulk of code is completed
+time_lapsed = end_time - start_time
+end_time = time.time()
+start_time = time.time()
+time_convert(time_lapsed)
+'''
 
 
 
@@ -43,31 +52,6 @@ if answer.lower().strip() == "yes":
                         DoorOpen = True
                 print("The door slides open revealling a ladder that you start to climb\n")
                 time.sleep(3)
-                print("You arive in what appears to be a treehouse, rigged out with a state of the art computer system with monitors to match\n")
-                time.sleep(2)
-                print("In the corner of the room there is a box with a monitor and a keyboard, the monitor reads, 'Anton'\n")
-                time.sleep(2)
-                print("You walk over to Anton and press enter, suddenly everything spins up and a voice says:")
-                time.sleep(2)
-                terminal("You are not authorised to access this area, please insert USB...")
-                time.sleep(2)
-                print("You look around the room in search of a USB drive, hopefully containing a way out...\n")
-                time.sleep(2)
-                print("Success, you found a pen drive on the inside door of a mini fridge\n")
-                time.sleep(1)
-                print("You make your way back towards anton and insert the USB, once again everything lights up")
-                time.sleep(2)
-                terminal("I have detected that you are not authorised to access this area, ")
-                terminal("However there are contingencies to help stuck travellers like yourself\n")
-                terminal("~~~ATTEMPTING TO CONTACT REMOTE FACILITY~~~\n")
-                loading()
-                terminal("~~~CONTACT SUCCESSFUL~~~\n")
-                time.sleep(1)
-                terminal("A helicopter has been dispatched to your location, please exit onto the roof were it will pick you up and carry you to safety")
-
-
-                
-                
 
 
 
@@ -90,7 +74,7 @@ if answer.lower().strip() == "yes":
                 print("You push open the door revealing another room, but not a kitchen, this room has a soletary computer in it\n")
                 time.sleep(1)
                 print("You notice that there is a terminal open on it, you move to get a closer look")
-                print(r"""
+                print(r"""\
       /\_/\
  /\  / o o \
 //\\ \~(*)~/
