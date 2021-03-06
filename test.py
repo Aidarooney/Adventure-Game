@@ -1,9 +1,3 @@
-print(r"""\
-      /\_/\
- /\  / o o \
-//\\ \~(*)~/
-`  \/   ^ /
-   | \|| ||
-   \ '|| ||
-    \)()-())
-                """)
+from functions import loading
+
+loading()
