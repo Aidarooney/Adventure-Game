@@ -19,7 +19,7 @@ def time_convert(sec):
   sec = sec % 60
   hours = mins // 60
   mins = mins % 60
-  print("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+  return("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
 
 
 def walking():
@@ -58,4 +58,7 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
     if iteration == total: 
         print()
 
+def ending(username):
+    print("Thank you for playing my game!")
+    username = input("Please enter a username:\n")
 

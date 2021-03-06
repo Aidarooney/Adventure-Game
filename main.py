@@ -2,17 +2,29 @@ from functions import walking
 from functions import terminal
 from functions import time_convert
 from functions import loading
+from datetime import date
+import mysql.connector
+from mysql.connector.cursor import MySQLCursorNamedTuple
 import time
 answer = input("Would you like to play? (yes/no)\n")
 enter = "Press Enter to continue..."
 HEXcode = "open"
 HEXinput = ""
+inventory = []
 DoorOpen = False
 riddle = "map" 
 Break = False
+Break2 = False
 fire_answers = "fuel, oxygen, heat"
 fire_input = ""
+username = ""
+timeTaken = ""
+today = date.today()
 
+login = "username"
+Password = "password"
+Host = "host"
+Port = "port"
 
 
 
@@ -63,7 +75,16 @@ if answer.lower().strip() == "yes":
                 loading()
                 terminal("~~~CONTACT SUCCESSFUL~~~\n")
                 time.sleep(1)
-                terminal("A helicopter has been dispatched to your location, please exit onto the roof were it will pick you up and carry you to safety")
+                terminal("A helicopter has been dispatched to your location, please exit onto the roof were it will pick you up and carry you to safety...\n")
+                time.sleep(5)
+                print("Thank you for playing my game!")
+                username = input("Please enter a username to log your score:\n")
+                end_time = time.time()
+                time_lapsed = end_time - start_time
+                timeTaken = time_convert(time_lapsed)
+                print("You got a time of :")
+                print (timeTaken)
+                input(enter)
 
 
                 
@@ -79,6 +100,33 @@ if answer.lower().strip() == "yes":
             time.sleep(1)
             if answer ==  "chest":
                 print("You walk over towards the chest and open it, there is a crowbar inside (This can be used to access rooms that are locked)")
+                inventory = inventory + "Crowbar"
+                time.sleep(1)
+                print("You make your way over to the garage door and pull use the crowbar to pry the door open...\n")
+                time.sleep(2)
+                print("*The door breaks open with ease*\n")
+                time.sleep(1)
+                print("Inside reveals a car that could be used to make an escape")
+                time.sleep(1)
+                answer = input("You start to frantically check for the keys (glovebox/visor/under seat)")
+                while answer != "visor":
+                    print("There was nothing there...\n")
+                    answer = input("You continue to frantically check for the keys (glovebox/visor/under seat)")
+
+                print("The keys fall into your lap\n")
+                time.sleep(1)
+                print("You start the engine and quickly reverse away...\n")
+                time.sleep(5)
+                print("Thank you for playing my game!")
+                username = input("Please enter a username to log your score:\n")
+                end_time = time.time()
+                time_lapsed = end_time - start_time
+                timeTaken = time_convert(time_lapsed)
+                print("You got a time of :")
+                print (timeTaken)
+                input(enter)
+
+
 
             elif answer == "garage":
                 print("You walk ovr to a door on the other side of the building that appears to lead to some sort of garage.\n")
@@ -109,6 +157,33 @@ if answer.lower().strip() == "yes":
                         terminal("Congratulations you solved the riddle, the code for the door is '1238'\n")
                     else:
                         terminal("Please Try again that was not the answer\n")
+                    time.sleep(3)
+                    print("You make your way over to the door and punch in the numbers\n")
+                    time.sleep(1)
+                    print("The door slides open with ease revealing a car that could be used to make your escape\n")
+                    time.sleep(1)
+                    print("You make your way over to the door of the car and get inside\n")
+                    time.sleep(1)
+                    answer = input("You start to frantically check for the keys (glovebox/visor/under seat)")
+                    while answer != "visor":
+                        print("There was nothing there...\n")
+                        answer = input("You continue to frantically check for the keys (glovebox/visor/under seat)")
+
+                    print("The keys fall into your lap\n")
+                    time.sleep(1)
+                    print("You start the engine and quickly reverse away...\n")
+                    time.sleep(5)
+                    print("Thank you for playing my game!")
+                    username = input("Please enter a username to log your score:\n")
+                    end_time = time.time()
+                    time_lapsed = end_time - start_time
+                    timeTaken = time_convert(time_lapsed)
+                    print("You got a time of :")
+                    print (timeTaken)
+                    input(enter)
+                    
+
+
                     
         
         else:
@@ -157,3 +232,15 @@ if answer.lower().strip() == "yes":
 else:
     print("That's too bad")
     input(enter)
+
+mydb = mysql.connector.connect(
+    username = login,
+    password = Password,
+    host = Host,
+    port = Port,
+    database = "Leaderboard",
+)
+
+mycursor = mydb.cursor()
+mycursor.execute("INSERT INTO Leaderboard (Username, Time, Date) VALUES (%s, %s, %s)", (username, timeTaken, today))
+mydb.commit()
