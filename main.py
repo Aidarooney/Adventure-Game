@@ -2,11 +2,13 @@ from functions import walking
 from functions import terminal
 from functions import time_convert
 from functions import loading
+from functions import leaderboard
+from functions import score
 from datetime import date
 import mysql.connector
 from mysql.connector.cursor import MySQLCursorNamedTuple
 import time
-answer = input("Would you like to play? (yes/no)\n")
+answer = input("Would you like to play, see the leaderboard or quit? (Yes/Leaderboard/Quit)\n")
 enter = "Press Enter to continue..."
 HEXcode = "open"
 HEXinput = ""
@@ -21,10 +23,7 @@ username = ""
 timeTaken = ""
 today = date.today()
 
-login = "username"
-Password = "password"
-Host = "host"
-Port = "port"
+
 
 
 
@@ -84,6 +83,7 @@ if answer.lower().strip() == "yes":
                 timeTaken = time_convert(time_lapsed)
                 print("You got a time of :")
                 print (timeTaken)
+                score(username, timeTaken, today)
                 input(enter)
 
 
@@ -124,6 +124,7 @@ if answer.lower().strip() == "yes":
                 timeTaken = time_convert(time_lapsed)
                 print("You got a time of :")
                 print (timeTaken)
+                score(username, timeTaken, today)
                 input(enter)
 
 
@@ -180,6 +181,7 @@ if answer.lower().strip() == "yes":
                     timeTaken = time_convert(time_lapsed)
                     print("You got a time of :")
                     print (timeTaken)
+                    score(username, timeTaken, today)
                     input(enter)
                     
 
@@ -229,18 +231,13 @@ if answer.lower().strip() == "yes":
         print("You Lost")
         input(enter)
 
+elif answer.lower().strip() == "leaderboard":
+    leaderboard()
+    input(enter)
+
+
 else:
     print("That's too bad")
     input(enter)
 
-mydb = mysql.connector.connect(
-    username = login,
-    password = Password,
-    host = Host,
-    port = Port,
-    database = "Leaderboard",
-)
 
-mycursor = mydb.cursor()
-mycursor.execute("INSERT INTO Leaderboard (Username, Time, Date) VALUES (%s, %s, %s)", (username, timeTaken, today))
-mydb.commit()

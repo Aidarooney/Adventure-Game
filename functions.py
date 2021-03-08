@@ -1,5 +1,7 @@
 import time
 import sys
+import mysql.connector
+from mysql.connector.cursor import MySQLCursorNamedTuple
 class bcolors:
     green= '\033[92m'
     ENDC = '\033[0m'
@@ -19,7 +21,7 @@ def time_convert(sec):
   sec = sec % 60
   hours = mins // 60
   mins = mins % 60
-  return("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),sec))
+  return("Time Lapsed = {0}:{1}:{2}".format(int(hours),int(mins),round(float(sec), 2)))
 
 
 def walking():
@@ -62,3 +64,41 @@ def ending(username):
     print("Thank you for playing my game!")
     username = input("Please enter a username:\n")
 
+def leaderboard():
+    login = "username"
+    Password = "password"
+    Host = "host"
+    Port = "port"
+
+    mydb = mysql.connector.connect(
+        username = login,
+        password = Password,
+        host = Host,
+        port = Port,
+        database = "Leaderboard",
+    )
+
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM Leaderboard ORDER BY Time asc LIMIT 5")
+    result = mycursor.fetchall()
+
+    for row in result: 
+        print(row) 
+
+def score(username, timeTaken, today):
+    login = "username"
+    Password = "password"
+    Host = "host"
+    Port = "port"
+
+    mydb = mysql.connector.connect(
+        username = login,
+        password = Password,
+        host = Host,
+        port = Port,
+        database = "Leaderboard",
+    )
+
+    mycursor = mydb.cursor()
+    mycursor.execute("INSERT INTO Leaderboard (Username, Time, Date) VALUES (%s, %s, %s)", (username, timeTaken, today))
+    mydb.commit()
